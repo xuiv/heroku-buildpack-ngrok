@@ -3,7 +3,7 @@
 echo "Starting ngrok with command \`${ngrok_cmd}\`"
 eval "ngrok tcp 9090 --authtoken 4bzM2n2AJwEH3jD2mTxWP_6Vmy6iihkUa2HaDmCmv8j >/dev/null 2>&1 &"
 ngrok_pid=$!
-eval "gost -L=socks5://:9090 >/dev/null 2>&1 &"
+
 export NGROK_PID=$ngrok_pid
 
 eval "$@"
