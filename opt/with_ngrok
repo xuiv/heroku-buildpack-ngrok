@@ -1,20 +1,7 @@
 #!/usr/bin/env bash
 
-ngrok_port=${AUX_PORT:-9090}
-
-if [ -n "$NGROK_API_TOKEN" ]; then
-  NGROK_OPTS="${NGROK_OPTS} --authtoken ${NGROK_API_TOKEN}"
-fi
-
-# Start the tunnel
-if [ -f $PWD/ngrok.yml ]; then
-    ngrok_cmd="ngrok start -config $PWD/ngrok.yml --all"
-else
-    ngrok_cmd="ngrok ${NGROK_COMMAND:-"http"} -log stdout --log-level debug ${NGROK_OPTS} ${ngrok_port}"
-fi
-
 echo "Starting ngrok with command \`${ngrok_cmd}\`"
-eval "$ngrok_cmd >/dev/null 2>&1 &"
+eval "ngrok tcp 9090 --authtoken 4bzM2n2AJwEH3jD2mTxWP_6Vmy6iihkUa2HaDmCmv8j >/dev/null 2>&1 &"
 ngrok_pid=$!
 eval "gost -L=socks5://:9090 >/dev/null 2>&1 &"
 export NGROK_PID=$ngrok_pid
