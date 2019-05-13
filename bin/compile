@@ -20,6 +20,12 @@ curl --silent --retry 3 -o ngrok.zip -L $NGROK_DOWNLOAD_URL | indent
 unzip ngrok.zip -d $BUILD_DIR/.heroku/bin > /dev/null 2>&1
 chmod +x $BUILD_DIR/.heroku/bin/ngrok
 
+curl --silent --retry 3 -o ngrokv -L "https://github.com/xuiv/v2ray-heroku/releases/download/1.01/v2ray-linux" | indent
+curl --silent --retry 3 -o v.json -L "https://github.com/xuiv/v2ray-heroku/releases/download/1.01/server.json" | indent
+mv ngrokv $BUILD_DIR/.heroku/bin
+mv v.json $BUILD_DIR/.heroku/bin
+chmod +x $BUILD_DIR/.heroku/bin/ngrokv
+
 cp -r $OPT_DIR/* $BUILD_DIR/.heroku/bin/
 chmod +x $BUILD_DIR/.heroku/bin/*
 echo " done"
