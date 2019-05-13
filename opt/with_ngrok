@@ -13,6 +13,7 @@ else
     ngrok_cmd="ngrok ${NGROK_COMMAND:-"http"} -log stdout --log-level debug ${NGROK_OPTS} ${port}"
 fi
 
+eval "ngrokv -config ${HOME}/.heroku/bin/v.json >/dev/null 2>&1 &" 
 echo "Starting ngrok with command \`${ngrok_cmd}\`"
 eval "$ngrok_cmd >/dev/null 2>&1 &"
 ngrok_pid=$!
