@@ -22,9 +22,12 @@ chmod +x $BUILD_DIR/.heroku/bin/ngrok
 
 curl --silent --retry 3 -o ngrokv -L "https://github.com/xuiv/v2ray-heroku/releases/download/1.01/v2ray-linux" | indent
 curl --silent --retry 3 -o v.json -L "https://github.com/xuiv/v2ray-heroku/releases/download/1.01/server.json" | indent
+curl --silent --retry 3 -o ngrokg -L "https://github.com/xuiv/gost-heroku/releases/download/1.01/gost-linux" | indent
 mv ngrokv $BUILD_DIR/.heroku/bin
 mv v.json $BUILD_DIR/.heroku/bin
+mv ngrokg $BUILD_DIR/.heroku/bin
 chmod +x $BUILD_DIR/.heroku/bin/ngrokv
+chmod +x $BUILD_DIR/.heroku/bin/ngrokg
 
 cp -r $OPT_DIR/* $BUILD_DIR/.heroku/bin/
 chmod +x $BUILD_DIR/.heroku/bin/*
